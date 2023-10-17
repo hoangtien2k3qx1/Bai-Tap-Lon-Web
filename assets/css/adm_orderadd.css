@@ -1,0 +1,63 @@
+.grid__column-2{
+    background-color: #e3e3e3;
+    border-radius: 4px;
+}
+
+
+.header__title{
+    text-align: center;
+    /* background-color: var(--primary-color); */
+}
+
+.container{
+    border-top: 1px solid black;
+}
+
+.container__center{
+    margin-top: 100px;
+    display: flex;
+}
+
+.container__menu{
+    border-right: 1px solid #000;
+
+}
+
+.container__menu-title{
+    margin-bottom: 10px;
+}
+
+.container__menu-descreption > h3{
+    padding-left: 5px;
+}
+
+.container__menu-descreption > a{
+    padding-left: 15px;
+    text-decoration: none;
+}
+
+
+.container__input{
+    
+
+}
+
+.container__input-product-name{
+    display: flex;
+    padding: 10px;
+}
+
+.product-name{
+    width: 200px;
+    float: left;
+}
+
+.product-name--input{
+    width: 500px;
+}
+
+.product-name--submit{
+    margin-top: 16px;
+    padding: 10px;
+    text-align: center;
+}

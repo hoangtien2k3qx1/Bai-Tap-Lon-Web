@@ -1,0 +1,29 @@
+.header__title{
+    text-align: center;
+}
+
+.container{
+    border-top: 1px solid black;
+}
+
+.container__center{
+    margin-top: 100px;
+    display: flex;
+}
+
+.container__menu{
+    border-right: 1px solid #000;
+}
+
+.container__menu-title{
+    margin-bottom: 10px;
+}
+
+.container__menu-descreption > h3{
+    padding-left: 5px;
+}
+
+.container__menu-descreption > a{
+    padding-left: 15px;
+    text-decoration: none;
+}

@@ -1,0 +1,108 @@
+<?php 
+  session_start();
+  if(!isset($_SESSION['User_name'])) {
+    header("Location: login.php");
+  }
+?>
+<?php
+    $host = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "cta_shop";
+
+    //tao ket noi
+    $conn = new mysqli($host, $username, $password, $database);
+    // Kiểm tra kết nối
+    if ($conn->connect_error) {
+        die("Kết nối tới cơ sở dữ liệu thất bại: " . $conn->connect_error);
+    }
+?>
+<?php
+	    $Customer_id = $_GET['cid'];
+
+        $query = "Select * From customer Where Customer_id = $Customer_id";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result); //hien thi len form
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/productadd.css">
+  <title>Document</title>
+</head>
+<body>
+  <form name="product" action="adm_customer_edit.php" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name ="id" value="<?php echo $Customer_id ?>">
+  <div class="header">
+    <div class="grid">
+      <div class="header__title">
+        <h3>CTA MANEGER</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <div class="container__center">
+
+      <div class="grid__column-2">
+          <div class="container__menu">
+            <h2 class="container__menu-title">Danh mục</h2>
+            <div class="container__menu-descreption">
+              <h3>Quản lý Sản Phẩm :</h3>
+              <a href="adm_productadd.php" class="container__menu-link">Thêm Sản Phẩm</a> <br>
+              <a href="adm_product_list.php" class="container__menu-link">Danh Sách Sản Phẩm</a>
+            </div>
+            <div class="container__menu-descreption">
+              <h3>Quản lý đơn hàng :</h3>
+              <a href="adm_orderadd.php" class="container__menu-link">Thêm Đơn Hàng </a> <br>
+              <a href="adm_orderlist.php" class="container__menu-link">Danh Sách Đơn Hàng</a>
+            </div>
+            <div class="container__menu-descreption">
+              <h3>Quản lý khách hàng :</h3>
+              <a href="adm_customer_list.php" class="container__menu-link">Danh Sách Khách </a>
+            </div>
+            <div class="container__menu-descreption-home">
+              <a href="adm_logout.php"><h3> > Trở Lại Trang Chủ <</h3></a>
+            </div>
+          </div>
+        </div>
+        <div class="grid__column-10">
+          <div class="container__input">
+            <div class="container__input-product-name">
+              <div class="product-name">Nhập Tên :</div>
+              <input type="text" class="product-name--input" name="Customer_name" value="<?php echo $row['Customer_name'] ?>">
+            </div>
+    
+            <div class="container__input-product-name">
+              <div class="product-name">Nhập SĐT :</div>
+              <input type="text" class="product-name--input" name="Customer_phonenumber" value="<?php echo $row['Customer_phonenumber'] ?>">
+            </div>
+
+            <div class="container__input-product-name">
+              <div class="product-name">Nhập Email :</div>
+              <input type="email" class="product-name--input" name="Customer_email" value="<?php echo $row['Customer_email'] ?>">
+            </div>
+    
+            <div class="container__input-product-name">
+              <div class="product-name">Nhập Address :</div>
+              <input type="text" class="product-name--input" name="Customer_address" value="<?php echo $row['Customer_address'] ?>">
+            </div>
+    
+    
+            <button type="submit" class="product-name--submit"> Sửa Thông Tin  </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+</body>
+</html>
